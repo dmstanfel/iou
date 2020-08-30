@@ -14,7 +14,7 @@ python3 --help
 
 Output from this command will confirm you have properly configured your Python interpreter.
 
-Clone this repository to a conveinent directory. For information on how to clone repositories refer to [the documentation](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
+Clone this repository to a convenient directory. For information on how to clone repositories refer to [the documentation](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
 
 ## Usage
 
