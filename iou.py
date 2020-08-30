@@ -162,7 +162,7 @@ def split_total(total, split_by):
     if decimal > 100:
         rounded_dec = int(float("." + str(decimal)) * 100) / 100
         owes = [integer + rounded_dec for i in range(split_by - 1)]
-        owes.append(integer + rounded_dec + 0.01)
+        owes.append(round(integer + rounded_dec + 0.01, 2))
         return owes
     return [integer + float("." + str(decimal)) for i in range(split_by)]
 
@@ -188,11 +188,11 @@ def i_o_u(indiv_paid, each_owe):
                 if indebted[debtor] == 0:
                     break
                 if indebted[debtor] >= value:
-                    print(f"\t{owes} $ {zformat(value)} for this month's utilities.")
+                    print(f"\t{owes} $ {zformat(round(value,2))} for this month's utilities.")
                     indebted[debtor] = indebted[debtor] - value
                     owed[owes] = value - value
                 else:
-                    print(f"\t{owes} $ {zformat(indebted[debtor])} for this months utilites.")
+                    print(f"\t{owes} $ {zformat(round(indebted[debtor], 2))} for this months utilites.")
                     owed[owes] = value - indebted[debtor]
                     indebted[debtor] = 0
 
@@ -239,7 +239,6 @@ def get_owed_indebted(indiv_paid, each_owe):
             )
     return sort_by_value(owed), sort_by_value(indebted)
 
-
 def sort_by_value(dictionary):
     """
     Sorts a dictionary by its values.
@@ -248,14 +247,13 @@ def sort_by_value(dictionary):
     ----------
     dictionary : dict
         A dictionary to sort by value.
-
+    
     Returns
     -------
     dict
         The same dictionary sorted by values.
     """
     return {k: v for k, v in sorted(dictionary.items(), key=lambda item: item[1])}
-
 
 def zformat(num):
     """
